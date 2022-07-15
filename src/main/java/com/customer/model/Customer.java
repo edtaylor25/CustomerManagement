@@ -30,7 +30,7 @@ public class Customer {
 	private String address;
 	@Column(name = "zip")
 	private int zip;
-	
+
 	
 	public Long getId() {
 		return id;
