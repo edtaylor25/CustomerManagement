@@ -1,5 +1,6 @@
 package com.customer.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,27 +8,24 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-
 import com.customer.model.Customer;
 import com.customer.service.CustomerService;
 
 @Controller
 public class CustomerController {
-
+	
+	@Autowired
 	CustomerService customerService;
 
-	public CustomerController(CustomerService customerService) {
-		super();
-		this.customerService = customerService;
-	}
+
 	
 	@GetMapping("/")
 	public String homePage(Model model) {
-		model.addAttribute("allcutomerlist", customerService.getAllCustomers());
+		model.addAttribute("listAllCustomers", customerService.getAllCustomers());
 		return "home";
 	}
 	
-	@PostMapping("/addnew")
+	@GetMapping("/addnew")
 	public String addNewCustomer(Model model) {
 		Customer customer = new Customer();
 		model.addAttribute("customer", customer);
@@ -46,6 +44,7 @@ public class CustomerController {
 		return "update";
 	}
 	
+	@GetMapping("/deleteCustomer/{id}")
 	public String deleteCustomer(@PathVariable(value = "id") long id) {
 		customerService.deleteById(id);
 		
