@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 
@@ -16,10 +17,15 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	@NotEmpty(message = "User's name cannot be empty.")
 	@Column(name = "first_name")
 	private String firstName;
+
+	@NotEmpty(message = "User's name cannot be empty")
 	@Column(name = "last_name")
 	private String lastName;
+
 	@Column(name = "email")
 	private String email;
 	@Column(name = "state")
