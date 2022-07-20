@@ -30,12 +30,13 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public Customer getById(Long id) {
 		Optional<Customer> optional = customerRepository.findById(id);
-		Customer customer = null;
+		//Customer customer = null;
 		if (optional.isPresent())
-			customer = optional.get();
+		return	optional.get();
 		else throw new RuntimeException(
 				"Customer not found : " + id);
-		return customer; 
+		//return customer; 
+		//= customer 
 	}
 
 	@Override
