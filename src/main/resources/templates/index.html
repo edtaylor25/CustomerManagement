@@ -9,7 +9,8 @@
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+        <!--<link href="css/styles.css" rel="stylesheet" />-->
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
         
 
     </head>
@@ -39,18 +40,23 @@
             </div>
             <!-- Search and Filter-->
             
-            <input class="form-control mb-4" onkeyup="myFunction()" id="tableSearch" type="text" placeholder="Search..">
+            <div class="input-filter">
+                <input type="text" name="searchFilter" class="filter form-control" id="filter" placeholder="Enter Search Term" onkeyup="searchCard()">
+                <br><br>
+            </div>
+
             
-          
+          <div class="card-lists" id="card-lists">
             <!-- Content Row-->
             <div class="row gx-4 gx-lg-5">
            
-       <tbody id="myTable">
+       
         <tr th:each="customer:${listAllCustomers}">
-          <div class="col-md-4 mb-5">
+          <div class="card-filter col-md-4 mb-5">
            <div class="card h-100">
            <div class="card-body">
-           <h2 class="card-title"><td th:text="${customer.firstName}"> <td th:text=" ${customer.lastName}"></td> </h2>
+           <span style="font-weight: 500;  font-size: calc(1.325rem + 0.9vw); padding-right:2px" class="card-title"><td th:text="${customer.firstName}"></span>
+           <span style="font-weight: 500;  font-size: calc(1.325rem + 0.9vw); padding-left:2px" class="card-title"><td th:text="${customer.lastName}"></span>
                             
         <p class="card-text">
         <td th:text="${customer.email}"></td><br>
@@ -68,9 +74,8 @@
                 </div>
                     </div>
                 </div>
-               </tr>
-       </tbody>
-       
+               </tr>  
+            </div> 
             </div>
         </div>
         <!-- Footer-->

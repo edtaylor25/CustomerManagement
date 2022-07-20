@@ -41,7 +41,7 @@ public class CustomerController {
 	public String updateCustomer(@PathVariable(value = "id") long id, Model model) {
 		Customer customer = customerService.getById(id);
 		model.addAttribute("customer", customer);
-		return "update";
+		return "update2";
 	}
 	
 	@GetMapping("/deleteCustomer/{id}")

@@ -34,6 +34,7 @@ public class Customer {
 	private String city;
 	@Column(name = "address")
 	private String address;
+	
 	@Column(name = "zip")
 	private int zip;
 	
